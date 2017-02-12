@@ -2,7 +2,6 @@
 
 //-----描画-----//
 class CDraw{
-	LPDIRECT3DTEXTURE9 _texture[5];	//テクスチャ
 	void SetTexture();
 	VERTEX_2D _status_vx[CHARCTER_MAX][4];	//HP、PP表示用ポリゴン
 	VERTEX_2D _bg_vx[4];	//背景描画用ポリゴン
@@ -16,9 +15,36 @@ class CDraw{
 	void UpdateStatusvx();
 	//---背景の描画---//
 	void DrawBg();
+
+
 public:
+
 	void DrawMain();
 	CDraw(){
 		SetTexture();
 	}
+};
+
+//-----行動選択関係-----//
+class CBattleDraw{
+	VERTEX_2D _arrow_vx[4],		//選択矢印
+	_stock_vx[CHARCTER_MAX][4];	//ストック
+
+	void SetVx();
+	void SexTexture();
+
+	//---行動選択---//
+	void DrawActionSelect();
+	//---対象選択---//
+	void DrawTargetSelect();
+	//---ストック---//
+	void DrawStock(int _charcter_id);
+public:
+	//---メイン---//
+	void BattleDrawMain();
+
+	CBattleDraw(){
+		SetVx();
+		SexTexture();
+	};
 };

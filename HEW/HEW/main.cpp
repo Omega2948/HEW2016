@@ -1,4 +1,5 @@
 #define MAIN
+
 #include"Main.h"
 
 //=======================================================================================
@@ -127,7 +128,55 @@ void ScreenState()
 //-----ステータスの初期化-----//
 void SetStatus()
 {
+	for (int i = 0; i < g_charcter_max[g_stage]; i++){
+		g_charcter[i].char_id = i;
+		g_charcter[i].job = g_charcter_job[g_stage][i];
 
+		switch (g_charcter[i].job){
+			case SWORDSMAN:
+				g_charcter[i].max_hp = g_charcter[i].hp = 1;
+				g_charcter[i].max_pp = g_charcter[i].pp = 1;
+				g_charcter[i].atk = 1;
+				g_charcter[i].def = 1;
+				g_charcter[i].Int = 1;
+				g_charcter[i].spd = 1;
+
+				break;
+			case MAGICIAN:
+				g_charcter[i].max_hp = g_charcter[i].hp = 1;
+				g_charcter[i].max_pp = g_charcter[i].pp = 1;
+				g_charcter[i].atk = 1;
+				g_charcter[i].def = 1;
+				g_charcter[i].Int = 1;
+				g_charcter[i].spd = 1;
+
+				break;
+			case ARCHER:
+				g_charcter[i].max_hp = g_charcter[i].hp = 1;
+				g_charcter[i].max_pp = g_charcter[i].pp = 1;
+				g_charcter[i].atk = 1;
+				g_charcter[i].def = 1;
+				g_charcter[i].Int = 1;
+				g_charcter[i].spd = 1;
+
+				break;
+			case SHIELDER:
+				g_charcter[i].max_hp = g_charcter[i].hp = 1;
+				g_charcter[i].max_pp = g_charcter[i].pp = 1;
+				g_charcter[i].atk = 1;
+				g_charcter[i].def = 1;
+				g_charcter[i].Int = 1;
+				g_charcter[i].spd = 1;
+
+				break;
+		}
+
+		g_charcter[i].cor_atk =
+			g_charcter[i].cor_def =
+			g_charcter[i].cor_Int = 0;
+
+		g_charcter[i].stock = WHITE_STOCK;
+	}
 }
 //=======================================================================================
 //    End of File

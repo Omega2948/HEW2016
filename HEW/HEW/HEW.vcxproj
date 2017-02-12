@@ -80,6 +80,7 @@
     <ClInclude Include="Class.h" />
     <ClInclude Include="Cross.h" />
     <ClInclude Include="Draw.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Window.h" />
@@ -88,6 +89,7 @@
     <ClCompile Include="Battole.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="DX.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />

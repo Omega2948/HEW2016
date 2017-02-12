@@ -4,24 +4,24 @@
 void CDraw::SetTexture()
 {
 	//---Œ•m---//
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char000.png", &_texture[0]))){
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char000.png", &g_texture[TEXTURE_SWORDSMAN]))){
 		exit(1);
 	}
 	//---–‚pt---//
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char001.png", &_texture[1]))){
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char001.png", &g_texture[TEXTURE_MAGICIAN]))){
 		exit(1);
 	}
 	//---‹|•º---///
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char002.png", &_texture[2]))){
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char002.png", &g_texture[TEXTURE_ARCHER]))){
 		exit(1);
 	}
 	//---‚•º---//
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char003.png", &_texture[3]))){
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/char003.png", &g_texture[TEXTURE_SHIELDER]))){
 		exit(1);
 	}
 
 	//---”wŒi---//
-	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/bg000.png", &_texture[4]))){
+	if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/bg000.png", &g_texture[TEXTURE_BACKGROUND]))){
 		exit(1);
 	}
 
@@ -92,14 +92,14 @@ void CDraw::SetVertex()
 //---ƒLƒƒƒ‰‚Ì•`‰æ---//
 void CDraw::DrawCharcter(int _char_no)
 {
-	g_pd3dDevice->SetTexture(0, _texture[_char_no]);
+	g_pd3dDevice->SetTexture(0, g_texture[_char_no]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, g_charcter[_char_no].vx, sizeof(VERTEX_2D));
 }
 
 //---”wŒi‚Ì•`‰æ---//
 void CDraw::DrawBg()
 {
-	g_pd3dDevice->SetTexture(0, _texture[4]);
+	g_pd3dDevice->SetTexture(0, g_texture[4]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _bg_vx, sizeof(VERTEX_2D));
 }
 
@@ -108,6 +108,7 @@ void CDraw::DrawStatus(int _char_no)
 {
 	
 }
+
 
 void CDraw::DrawMain()
 {
@@ -125,4 +126,42 @@ void CDraw::DrawMain()
 		g_pd3dDevice->EndScene();
 	}
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
+}
+
+//-----s“®‘I‘ğŠÖŒW-----//
+void CBattleDraw::SetVx()
+{
+
+}
+void CBattleDraw::SexTexture()
+{
+
+}
+
+//---s“®‘I‘ğ---//
+void CBattleDraw::DrawActionSelect()
+{
+
+}
+//---‘ÎÛ‘I‘ğ---//
+void CBattleDraw::DrawTargetSelect()
+{
+
+}
+//---ƒXƒgƒbƒN---//
+void CBattleDraw::DrawStock(int _charcter_id)
+{
+	if (_charcter_id < g_ally_charcter_max){
+		switch (g_charcter[_charcter_id].stock){
+		case WHITE_STOCK:
+
+			break;
+		case BLUE_STOCK:
+
+			break;
+		case GREEN_STOCK:
+
+			break;
+		}
+	}
 }

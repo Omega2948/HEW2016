@@ -1,0 +1,8 @@
+#.opensdfファイルを無視
+*/.opensdf
+
+#.DS_Storeファイルを無視
+*/.DS_Store
+
+#debugフォルダを無視
+debug/

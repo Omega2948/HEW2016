@@ -1,8 +1,0 @@
-﻿  main.cpp
-  c:\program files (x86)\windows kits\8.1\include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-c:\users\ヒロ\desktop\dx\dx22\hew\hew\main.cpp(66): warning C4244: '=' : 'DWORD' から 'float' への変換です。データが失われる可能性があります。
-c:\users\ヒロ\desktop\dx\dx22\hew\hew\main.cpp(82): warning C4244: '=' : 'DWORD' から 'float' への変換です。データが失われる可能性があります。
-  Window.cpp
-  c:\program files (x86)\windows kits\8.1\include\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  コードを生成中...
-  HEW.vcxproj -> C:\Users\ヒロ\Desktop\DX\DX22\HEW\Debug\HEW.exe

@@ -104,7 +104,7 @@ void ScreenState()
 	case TITLE:
 		//---タイトル画面の描画---//
 		Window.DrawTitle();
-		if (Key.ReleaseKey(VK_RETURN, ENTER_KEY)){
+		if (PUSH_A){
 			seane = GAME;
 		}
 		break;
@@ -116,7 +116,7 @@ void ScreenState()
 	case RESULT:
 		//---リザルト画面の描画---//
 		Window.DrawResult();
-		if (Key.ReleaseKey(VK_RETURN, ENTER_KEY)){
+		if (PUSH_A){
 			seane = TITLE;
 		}
 		break;

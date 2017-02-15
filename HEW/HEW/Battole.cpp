@@ -24,7 +24,12 @@ void CBattle::SelectCommand(int _act_charcter)
 				_charcter_action[_act_charcter][2] = ATTACK_ACTION;
 				break;
 			case SKILL:
-				_charcter_action[_act_charcter][2] = SKILL_ACTION;
+				if (g_charcter[_act_charcter].job != SHIELDER){
+					_charcter_action[_act_charcter][2] = SKILL_ACTION;
+				}
+				else{
+					_charcter_action[_act_charcter][2] = 100;
+				}
 				break;
 			case ITEM:
 				_charcter_action[_act_charcter][2] = ITEM_ACTION;
@@ -40,14 +45,14 @@ void CBattle::SelectCommand(int _act_charcter)
 			_select_target = TargetReset(_act_charcter);
 		}
 		//---一つ上に---//
-		if (Key.ReleaseKey(VK_UP, UP_KEY)){
+		if (PUSH_UP){
 			_select_command++;
 			if (_select_command > DEFENSE){
 				_select_command = ATTACK;
 			}
 		}
 		//---一つ下に---//
-		if (Key.ReleaseKey(VK_DOWN, DOWN_KEY)){
+		if (PUSH_DOWN){
 			_select_command--;
 			if (_select_command < ATTACK){
 				_select_command = DEFENSE;
@@ -253,7 +258,7 @@ void CBattle::SelectSort()
 {
 	int j = 0;
 	//---SPDによるソート---//
-	for (int i = 0; i < g_charcter_max; i++){
+	for (int i = 0; i < g_charcter_max[g_stage]; i++){
 		for (j = 0; j < i; j++){
 			if (g_charcter[_select_order[j]].spd >=
 				g_charcter[i].spd){
@@ -269,7 +274,7 @@ void CBattle::ActionSort()
 {
 	int j = 0;
 	//---SPD+補正値によるソート---//
-	for (int i = 0; i < g_charcter_max; i++){
+	for (int i = 0; i < g_charcter_max[g_stage]; i++){
 		for (j = 0; j < i; j++){
 			if (g_charcter[_select_order[j]].spd + _charcter_action[j][2] >
 				g_charcter[i].spd + _charcter_action[i][2]){

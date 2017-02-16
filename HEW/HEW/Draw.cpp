@@ -129,9 +129,10 @@ void CDraw::SetVertex()
 
 			for (int k = 0; k < 4; k++){
 				_status_vx[i][j][k].z = 0.0f;
-
+#ifdef DX
 				_status_vx[i][j][k].rhw = 1.0f;
 				_status_vx[i][j][k].diffuse = D3DCOLOR_RGBA(255, 255, 255, 255);
+#endif
 			}
 		}
 
@@ -314,15 +315,22 @@ void CDraw::SetVertex()
 //---キャラの描画---//
 void CDraw::DrawCharcter(int _char_no)
 {
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[g_charcter[_char_no].job]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, g_charcter[_char_no].vx, sizeof(VERTEX_2D));
+#endif
 }
 
 //---背景の描画---//
 void CDraw::DrawBg()
 {
+<<<<<<< HEAD
+=======
+#ifdef DX
+>>>>>>> f7e79cff34aaf307bc02e14d9bea415760d70ea2
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_BG_BATTLE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _bg_vx, sizeof(VERTEX_2D));
+#endif
 }
 
 //---ステータスの描画---//
@@ -334,21 +342,28 @@ void CDraw::DrawStatus(int _char_no)
 	int copy;
 
 	//---背景---//
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_PLAIN_SQUARE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][0], sizeof(VERTEX_2D));
+#endif
 
 	//---キャラID---//
 	_status_vx[_char_no][1][0].tex_u =
 		_status_vx[_char_no][1][3].tex_u = _char_no * 2 * FONT_U;
 	_status_vx[_char_no][1][1].tex_u =
 		_status_vx[_char_no][1][2].tex_u = (_char_no * 2 + 1) * FONT_U;
+		
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][1], sizeof(VERTEX_2D));
+#endif
 
 	//---HP---//
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_HP]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][2], sizeof(VERTEX_2D));
-	
+#endif
+
 	copy = g_charcter[_char_no].hp;
 	for (int i = 0; i < 2; i++){
 		ans = copy / wari;
@@ -358,15 +373,22 @@ void CDraw::DrawStatus(int _char_no)
 		_status_vx[_char_no][3 + i][1].tex_u =
 			_status_vx[_char_no][3 + i][2].tex_u = (ans * 2 + 1) * FONT_U;
 
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][3 + i], sizeof(VERTEX_2D));
+<<<<<<< HEAD
 		copy -= ans * wari;
+=======
+#endif
+>>>>>>> f7e79cff34aaf307bc02e14d9bea415760d70ea2
 		wari /= 10;
 	}
 
 	//---PP---//
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_PP]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][5], sizeof(VERTEX_2D));
+#endif
 
 	copy = g_charcter[_char_no].pp;
 	wari = 10;
@@ -378,15 +400,22 @@ void CDraw::DrawStatus(int _char_no)
 		_status_vx[_char_no][6 + i][1].tex_u =
 			_status_vx[_char_no][6 + i][2].tex_u = (ans * 2 + 1) * FONT_U;
 
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][6 + i], sizeof(VERTEX_2D));
+<<<<<<< HEAD
 		copy -= ans * wari;
+=======
+#endif
+>>>>>>> f7e79cff34aaf307bc02e14d9bea415760d70ea2
 		wari /= 10;
 	}
 
 	//---攻---//
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_ATK]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][8], sizeof(VERTEX_2D));
+#endif
 
 	copy = g_charcter[_char_no].pp;
 	wari = 10;
@@ -398,16 +427,20 @@ void CDraw::DrawStatus(int _char_no)
 		_status_vx[_char_no][9 + i][1].tex_u =
 			_status_vx[_char_no][9 + i][2].tex_u = (ans * 2 + 1) * FONT_U;
 
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][9 + i], sizeof(VERTEX_2D));
+#endif
 
 		copy -= ans * wari;
 		wari /= 10;
 	}
 
 	//---防---//
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_DEF]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][11], sizeof(VERTEX_2D));
+#endif
 
 	copy = g_charcter[_char_no].pp;
 	wari = 10;
@@ -419,8 +452,10 @@ void CDraw::DrawStatus(int _char_no)
 		_status_vx[_char_no][12 + i][1].tex_u =
 			_status_vx[_char_no][12 + i][2].tex_u = (ans * 2 + 1) * FONT_U;
 
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][12 + i], sizeof(VERTEX_2D));
+#endif
 
 		copy -= ans * wari;
 		wari /= 10;
@@ -431,39 +466,50 @@ void CDraw::DrawStatus(int _char_no)
 void CDraw::DrawField()
 {
 	for (int i = 0; i < 2; i++){
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FIELD]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _field_vx[i], sizeof(VERTEX_2D));
+#endif
 	}
 }
 
 //---残りターン---//
 void CDraw::DrawClock()
 {
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_PLAIN_CIRCLE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _clock_vx[0], sizeof(VERTEX_2D));
+#endif
 	
 	_clock_vx[1][0].tex_u =
 		_clock_vx[1][3].tex_u = g_turn * 2 * FONT_U;
 	_clock_vx[1][1].tex_u =
 		_clock_vx[1][2].tex_u = (g_turn * 2 + 1) * FONT_U;
 
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _clock_vx[1], sizeof(VERTEX_2D));
+#endif
 }
 
 //---コマンド---//
 void CDraw::DrawCommand()
 {
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_PLAIN_SQUARE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _command_vx[0], sizeof(VERTEX_2D));
+#endif
 	for (int i = 0; i < 4; i++){
+#ifdef DX
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_ATTACK + i]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _command_vx[i + 1], sizeof(VERTEX_2D));
+#endif
 	}
 }
 //---敵のスキル使用---//
 void CDraw::DrawDanger()
 {
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_PLAIN_SQUARE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _danger_vx[0], sizeof(VERTEX_2D));
 
@@ -472,29 +518,36 @@ void CDraw::DrawDanger()
 
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_REMAINDER]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _danger_vx[0], sizeof(VERTEX_2D));
-
+#endif
 
 	_danger_vx[1][0].tex_u =
 		_danger_vx[1][3].tex_u = g_next_skill[1] * 2 * FONT_U;
 	_danger_vx[1][1].tex_u =
 		_danger_vx[1][2].tex_u = (g_next_skill[1] * 2 + 1) * FONT_U;
 
+#ifdef DX
 	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_REMAINDER]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _danger_vx[0], sizeof(VERTEX_2D));
+#endif
 }
 
 void CDraw::DrawMain()
 {
+#ifdef DX
 	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0);
 	g_pd3dDevice->SetFVF(FVF_VERTEX_2D);
+#endif
 
+	//---------------------描画開始---------------------
+#ifdef DX
 	if (SUCCEEDED(g_pd3dDevice->BeginScene())){
+#endif
 		DrawBg();
 
 		//背景
 		DrawBg();
 		//フィールド
-		 DrawField();
+		DrawField();
 		for (int i = 0; i < g_charcter_max[g_stage]; i++){
 			//キャラ
 			DrawCharcter(i);
@@ -503,14 +556,22 @@ void CDraw::DrawMain()
 		}
 
 		//残りターン
-		 DrawClock();
+		DrawClock();
 		//コマンド
-		 DrawCommand();
+		DrawCommand();
 		//敵のスキル使用
-		 DrawDanger();
+		DrawDanger();
+		 
+		//---------------------描画終了---------------------
+#ifdef DX
 		g_pd3dDevice->EndScene();
 	}
+#endif
+
+	// バックバッファからプライマリバッファに転送
+#ifdef DX
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
+#endif
 }
 
 //-----行動選択関係-----//

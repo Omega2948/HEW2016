@@ -84,7 +84,9 @@ enum eTexture{
 	TEXTURE_MAGICIAN,	//魔術師
 	TEXTURE_ARCHER,		//弓兵
 	TEXTURE_SHIELDER,	//盾兵
-	TEXTURE_BACKGROUND,	//戦闘中背景
+	TEXTURE_BG_TITLE,	//タイトル画面背景
+	TEXTURE_BG_BATTLE,	//戦闘中背景
+	TEXTURE_BG_RESULT,	//リザルト画面背景
 	TEXTURE_FONT,		//フォント
 	TEXTURE_PLAIN_SQUARE,		//無地背景(四角)
 	TEXTURE_PLAIN_CIRCLE,		//無地背景(丸)
@@ -120,13 +122,16 @@ CCharcter g_charcter[CHARCTER_MAX];	//キャラクターを入れる型
 int g_stage = 0;	//現在ステージ
 
 int g_charcter_max[STAGE_MAX];	//ステージ別の敵の最大数
-int g_ally_charcter_max;	//味方キャラ数
+int g_ally_charcter_max[STAGE_MAX];	//味方キャラ数
 
 int g_charcter_job[STAGE_MAX][CHARCTER_MAX];	//ステージ別キャラクタージョブ
 
 int g_turn;	//経過ターン
 int g_next_skill[2];	//次の敵のスキルを撃つキャラのジョブと撃つまでのターン
 int g_enemy_skill[5][2];	//敵のスキル入れ
+
+int g_field[2][9];	//[キャラID][セル座標(左上0から右へ)]
+
 //---テクスチャ---//
 LPDIRECT3DTEXTURE9 g_texture[TEXTURE_MAX];	//テクスチャ
 
@@ -136,13 +141,15 @@ extern CCharcter g_charcter[CHARCTER_MAX];
 extern int g_stage;
 
 extern int g_charcter_max[STAGE_MAX];
-extern int g_ally_charcter_max;
+extern int g_ally_charcter_max[STAGE_MAX];
 
 extern int g_charcter_job[STAGE_MAX][CHARCTER_MAX];
 
 extern int g_turn;	//経過ターン
 extern int g_next_skill[2];	//次の敵のスキルを撃つキャラのジョブと撃つまでのターン
 extern int g_enemy_skill[5][2];	//敵のスキル入れ
+
+extern int g_field[2][9];
 
 extern LPDIRECT3DTEXTURE9 g_texture[TEXTURE_MAX];
 

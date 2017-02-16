@@ -1,5 +1,6 @@
 #pragma once
 
+
 class CWindow{
 	//---ウィンドウサイズのポリゴン---//
 	VERTEX_2D _window[4];

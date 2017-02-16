@@ -37,7 +37,6 @@ class CBattle{
 	最長AIが入る用の配列を
 	*/
 
-	int _field[2][9];	//[キャラID][セル座標(左上0から右へ)]
 
 	int _select_command;	//行動選択用
 	int _select_target;		//対象選択用
@@ -49,8 +48,8 @@ class CBattle{
 	int _count;	//swich内ループ用
 	int _select;
 
-	bool _select_flg;	//T...行動選択 
-	bool _target_flg;	//T...対象選択
+	bool _select_flg;	//T...行動選択中
+	bool _target_flg;	//T...対象選択中
 
 	//---行動選択---//
 	void SelectCommand(int _act_charcter);

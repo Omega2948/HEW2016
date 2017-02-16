@@ -15,6 +15,7 @@ enum eSeane{
 	RESULT
 };
 
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 
@@ -121,8 +122,6 @@ void ScreenState()
 		}
 		break;
 	}
-
-
 }
 
 //-----ステータスの初期化-----//

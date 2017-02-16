@@ -21,7 +21,7 @@ void CDraw::SetTexture()
 	//}
 
 	////---”wŒi---//
-	//if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/bg001.tga", &g_texture[TEXTURE_BACKGROUND]))){
+	//if (FAILED(D3DXCreateTextureFromFile(g_pd3dDevice, "data/bg001.tga", &g_texture[TEXTURE_BG_BATTLE]))){
 	//	exit(1);
 	//}
 
@@ -321,7 +321,7 @@ void CDraw::DrawCharcter(int _char_no)
 //---”wŒi‚Ì•`‰æ---//
 void CDraw::DrawBg()
 {
-	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_BACKGROUND]);
+	g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_BG_BATTLE]);
 	g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _bg_vx, sizeof(VERTEX_2D));
 }
 
@@ -360,8 +360,8 @@ void CDraw::DrawStatus(int _char_no)
 
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][3 + i], sizeof(VERTEX_2D));
+		copy -= ans * wari;
 		wari /= 10;
-		copy -= ans;
 	}
 
 	//---PP---//
@@ -380,8 +380,8 @@ void CDraw::DrawStatus(int _char_no)
 
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][6 + i], sizeof(VERTEX_2D));
+		copy -= ans * wari;
 		wari /= 10;
-		copy -= ans;
 	}
 
 	//---U---//
@@ -401,8 +401,8 @@ void CDraw::DrawStatus(int _char_no)
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][9 + i], sizeof(VERTEX_2D));
 
+		copy -= ans * wari;
 		wari /= 10;
-		copy -= ans;
 	}
 
 	//---–h---//
@@ -422,8 +422,8 @@ void CDraw::DrawStatus(int _char_no)
 		g_pd3dDevice->SetTexture(0, g_texture[TEXTURE_FONT]);
 		g_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, _status_vx[_char_no][12 + i], sizeof(VERTEX_2D));
 
+		copy -= ans * wari;
 		wari /= 10;
-		copy -= ans;
 	}
 }
 
@@ -536,7 +536,7 @@ void CBattleDraw::DrawTargetSelect()
 //---ƒXƒgƒbƒN---//
 void CBattleDraw::DrawStock(int _charcter_id)
 {
-	if (_charcter_id < g_ally_charcter_max){
+	if (_charcter_id < g_ally_charcter_max[g_stage]){
 		switch (g_charcter[_charcter_id].stock){
 		case WHITE_STOCK:
 

@@ -16,7 +16,7 @@ void CBattle::SelectCommand(int _act_charcter)
 {
 	//---コマンドの選択---//
 	if (!_select_flg){
-		if (Key.ReleaseKey(VK_RETURN, ENTER_KEY)){
+		if (PUSH_A){
 			_charcter_action[_act_charcter][0] = _select_command;
 			
 			switch (_select_command){
@@ -39,10 +39,12 @@ void CBattle::SelectCommand(int _act_charcter)
 				break;
 			}
 
-			_select_flg = true;
+			
+			_select_flg = false;
 			_select_command = 0;
 
 			_select_target = TargetReset(_act_charcter);
+			_target_flg = true;
 		}
 		//---一つ上に---//
 		if (PUSH_UP){
@@ -66,16 +68,124 @@ void CBattle::SelectCommand(int _act_charcter)
 			switch (g_charcter[_select_order[_act_charcter]].job)
 			{
 			case SWORDSMAN:
-					
+				if (PUSH_A){
+					_charcter_action[_act_charcter][1] = _select_target;
+					_select_flg = false;
+				}
+				if (PUSH_UP){
+					for (_count = -3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count -= 3){
+						if (_select_target + _count < 0){
+							_count += 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_DOWN){
+					for (_count = 3; g_field[1][_select_target + _count] > 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count += 3){
+						if (_select_target + _count < 0){
+							_count -= 9;
+						}
+					}
+					_select_target += _count;
+				}
 				break;
 			case MAGICIAN:
-
+				if (PUSH_A){
+					_charcter_action[_act_charcter][1] = _select_target;
+					_select_flg = false;
+				}
+				if (PUSH_UP){
+					for (_count = -3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count -= 3){
+						if (_select_target + _count < 0){
+							_count += 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_DOWN){
+					for (_count = 3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count += 3){
+						if (_select_target + _count < 0){
+							_count -= 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_RIGHT){
+					for (_count = 1; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count++){
+						if ((_select_target + _count) / 3 != (_select_target + _count - 1) / 3){
+							_count -= 3;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_LEFT){
+					for (_count = -1; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count--){
+						if ((_select_target + _count) / 3 != (_select_target + _count + 1) / 3){
+							_count += 3;
+						}
+					}
+					_select_target += _count;
+				}
 				break;
 			case ARCHER:
-
+				if (PUSH_A){
+					_charcter_action[_act_charcter][1] = _select_target;
+					_select_flg = false;
+				}
+				if (PUSH_UP){
+					for (_count = -3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count -= 3){
+						if (_select_target + _count < 0){
+							_count += 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_DOWN){
+					for (_count = 3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count += 3){
+						if (_select_target + _count < 0){
+							_count -= 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_RIGHT){
+					for (_count = 1; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count++){
+						if ((_select_target + _count) / 3 != (_select_target + _count - 1) / 3){
+							_count -= 3;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_LEFT){
+					for (_count = -1; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count--){
+						if ((_select_target + _count) / 3 != (_select_target + _count + 1) / 3){
+							_count += 3;
+						}
+					}
+					_select_target += _count;
+				}
 				break;
 			case SHIELDER:
-
+				if (PUSH_A){
+					_charcter_action[_act_charcter][1] = _select_target;
+					_select_flg = false;
+				}
+				if (PUSH_UP){
+					for (_count = -3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count -= 3){
+						if (_select_target + _count < 0){
+							_count += 9;
+						}
+					}
+					_select_target += _count;
+				}
+				if (PUSH_DOWN){
+					for (_count = 3; g_field[1][_select_target + _count] < 0 && g_charcter[g_field[1][_select_target + _count]].hp > 0; _count += 3){
+						if (_select_target + _count < 0){
+							_count -= 9;
+						}
+					}
+					_select_target += _count;
+				}
 				break;
 			}
 			break;
@@ -89,10 +199,14 @@ void CBattle::SelectCommand(int _act_charcter)
 
 				break;
 			case ARCHER:
-
+				if (PUSH_A){
+					_select_flg = false;
+				}
 				break;
 			case SHIELDER:
-
+				if (PUSH_A){
+					_select_flg = false;
+				}
 				break;
 			}
 			break;
@@ -116,27 +230,27 @@ int CBattle::TargetReset(int _act_charcter)
 		switch (g_charcter[_select_order[_act_charcter]].job)
 		{
 		case SWORDSMAN:
-			if (_field[1][0] > 0 ||
-				_field[1][3] > 0 ||
-				_field[1][6] > 0){
+			if (g_field[1][0] > 0 && g_charcter[g_field[1][0]].hp > 0 ||
+				g_field[1][3] > 0 && g_charcter[g_field[1][3]].hp > 0 ||
+				g_field[1][6] > 0 && g_charcter[g_field[1][6]].hp > 0){
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count] > 0){
+					if (g_field[1][_count] < 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count;
 					}
 				}
 			}
-			else if (_field[1][1] > 0 ||
-				_field[1][4] > 0 ||
-				_field[1][7] > 0){
+			else if (g_field[1][1] > 0 && g_charcter[g_field[1][1]].hp > 0 ||
+				g_field[1][4] > 0 && g_charcter[g_field[1][4]].hp > 0 ||
+				g_field[1][7] > 0 && g_charcter[g_field[1][7]].hp > 0){
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count + 1] > 0){
+					if (g_field[1][_count + 1] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count + 1;
 					}
 				}
 			}
 			else{
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count + 2] > 0){
+					if (g_field[1][_count + 2] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count + 2;
 					}
 				}
@@ -144,47 +258,46 @@ int CBattle::TargetReset(int _act_charcter)
 			break;
 		case MAGICIAN:
 			for (_count = 0; _count < 9; _count++){
-				if (_field[1][_count] > 0){
+				if (g_field[1][_count] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 					return _count;
 				}
 			}
 			break;
 		case ARCHER:
 			for (_count = 0; _count < 9; _count++){
-				if (_field[1][_count] > 0){
+				if (g_field[1][_count] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 					return _count;
 				}
 			}
 			break;
 		case SHIELDER:
-			if (_field[1][0] > 0 ||
-				_field[1][3] > 0 ||
-				_field[1][6] > 0){
+			if (g_field[1][0] > 0 && g_charcter[g_field[1][0]].hp > 0 ||
+				g_field[1][3] > 0 && g_charcter[g_field[1][3]].hp > 0 ||
+				g_field[1][6] > 0 && g_charcter[g_field[1][6]].hp > 0){
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count] > 0){
+					if (g_field[1][_count] < 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count;
 					}
 				}
 			}
-			else if (_field[1][1] > 0 ||
-				_field[1][4] > 0 ||
-				_field[1][7] > 0){
+			else if (g_field[1][1] > 0 && g_charcter[g_field[1][1]].hp > 0 ||
+				g_field[1][4] > 0 && g_charcter[g_field[1][4]].hp > 0 ||
+				g_field[1][7] > 0 && g_charcter[g_field[1][7]].hp > 0){
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count + 1] > 0){
+					if (g_field[1][_count + 1] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count + 1;
 					}
 				}
 			}
 			else{
 				for (_count = 0; _count < 9; _count += 3){
-					if (_field[1][_count + 2] > 0){
+					if (g_field[1][_count + 2] > 0 && g_charcter[g_field[1][_count]].hp > 0){
 						return _count + 2;
 					}
 				}
 			}
 			break;
 		}
-
 		break;
 	case SKILL:
 		switch (g_charcter[_select_order[_act_charcter]].job)
@@ -208,7 +321,7 @@ int CBattle::TargetReset(int _act_charcter)
 		break;
 	case DEFENSE:
 		for (_count = 0; _count < 9; _count++){
-			if (_field[0][_count] == _select_order[_act_charcter]){
+			if (g_field[0][_count] == _select_order[_act_charcter]){
 				return _count;
 			}
 		}
@@ -230,13 +343,91 @@ void CBattle::ActionAttack(int _act_charcter_id)
 		_damage = 1;
 	}
 
-	g_charcter[_charcter_action[_act_charcter_id][1]].hp -= _damage;
+	if (g_charcter[_charcter_action[_act_charcter_id][1]].SG_flg){
+		_damage /= 2;
+	}
+	g_charcter[_charcter_action[_act_charcter_id][1]].hp -= (int)_damage;
 }
 
 //---特技---//
 void CBattle::ActionSkill(int _act_charcter_id)
 {
+	float _damage;
+	int wari, ans;
+	switch (g_charcter[_act_charcter_id].job)
+	{
+	case SWORDSMAN:
+		wari = 100;
+		for (_count = 0; _count < 3; _count++){
+			ans = _charcter_action[_act_charcter_id][1] / wari;
+			if (ans > 0){
+				_damage = ((g_charcter[_act_charcter_id].atk +
+					g_charcter[_act_charcter_id].cor_atk) * STOCK_CRRECTION) -
+					(g_charcter[_charcter_action[_act_charcter_id][1]].def +
+					g_charcter[_charcter_action[_act_charcter_id][1]].cor_def);
 
+				if (_damage < 1){
+					_damage = 1;
+				}
+
+				if (g_charcter[_charcter_action[_act_charcter_id][1]].SG_flg){
+					_damage /= 2;
+				}
+				g_charcter[_charcter_action[_act_charcter_id][1]].hp -= (int)_damage;
+			}
+			_charcter_action[_act_charcter_id][1] -= ans * wari;
+			wari /= 10;
+		}
+		break;
+	case MAGICIAN:
+		wari = 10000;
+		for (_count = 0; _count < 3; _count++){
+			ans = _charcter_action[_act_charcter_id][1] / wari;
+			if (ans > 0){
+				_damage = ((g_charcter[_act_charcter_id].atk +
+					g_charcter[_act_charcter_id].cor_atk) * STOCK_CRRECTION) -
+					(g_charcter[_charcter_action[_act_charcter_id][1]].def +
+					g_charcter[_charcter_action[_act_charcter_id][1]].cor_def);
+
+				if (_damage < 1){
+					_damage = 1;
+				}
+
+				if (g_charcter[_charcter_action[_act_charcter_id][1]].SG_flg){
+					_damage /= 2;
+				}
+				g_charcter[_charcter_action[_act_charcter_id][1]].hp -= (int)_damage;
+			}
+			_charcter_action[_act_charcter_id][1] -= ans * wari;
+			wari /= 10;
+		}
+		break;
+	case ARCHER:
+		for (_count = g_ally_charcter_max[g_stage]; _count < g_charcter_max[g_stage]; _count++){
+			if (g_charcter[_count].hp > 0){
+				_damage = ((g_charcter[_act_charcter_id].atk +
+					g_charcter[_act_charcter_id].cor_atk) * STOCK_CRRECTION) -
+					(g_charcter[_count].def + g_charcter[_count].cor_def);
+			
+				if (_damage < 1){
+					_damage = 1;
+				}
+
+				if (g_charcter[_count].SG_flg){
+					_damage /= 2;
+				}
+				g_charcter[_count].hp -= (int)_damage;
+			}
+		}
+		break;
+	case SHIELDER:
+		for (_count = 0; _count < g_ally_charcter_max[g_stage]; _count++){
+			if (g_charcter[_count].hp > 0){
+				g_charcter[_count].SG_flg = true;
+			}
+		}
+		break;
+	}
 }
 
 //---アイテム---//

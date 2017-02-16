@@ -1,10 +1,14 @@
 #pragma once
 
+#include"Main.h"
+
 class CWindow{
+#ifdef DX
 	//---ウィンドウサイズのポリゴン---//
 	VERTEX_2D _window[4];
 	//---テクスチャ [0]-タイトル [1]-リザルト---//
 	LPDIRECT3DTEXTURE9 texture[2];
+#endif
 
 	//---頂点情報の初期化---//
 	void SetupVx();

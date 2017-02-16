@@ -16,7 +16,7 @@ void CBattle::SelectCommand(int _act_charcter)
 {
 	//---コマンドの選択---//
 	if (!_select_flg){
-		if (Key.ReleaseKey(VK_RETURN, ENTER_KEY)){
+		if (PUSH_A){
 			_charcter_action[_act_charcter][0] = _select_command;
 			
 			switch (_select_command){

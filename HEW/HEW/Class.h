@@ -57,4 +57,6 @@ public:
 
 	char command;	//アクションコマンド
 	char stock;	//ストック
+
+	bool SG_flg;	//シールドガード
 };
